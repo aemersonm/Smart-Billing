@@ -1,7 +1,7 @@
 import React from 'react'
 import { Productitem } from './Productitem'
 
-export const Catalog = ({loggedIn, user, products, isCatalog, isVendor, imgsProducts}) => {
+export const Catalog = ({loggedIn, user, products, isCatalog, isVendor}) => {
 
     return (
             <div className="">
@@ -9,8 +9,8 @@ export const Catalog = ({loggedIn, user, products, isCatalog, isVendor, imgsProd
                 <div className="row" style={{height:"1%"}}>
                     {products.map((product, index) => {
                         return (
-                            <div className="responsiveProduct col-lg-3 col-md-6 col-sm-12" key={index}>
-                                <Productitem loggedIn={loggedIn} user={user} product={product} isCatalog={isCatalog} isVendor={isVendor} imgsProducts={imgsProducts}/>
+                            <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
+                                <Productitem loggedIn={loggedIn} user={user} product={product} isCatalog={isCatalog} isVendor={isVendor}/>
                                 <br/><br/><br/>
                             </div>
                         )

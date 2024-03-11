@@ -10,7 +10,7 @@ export const Checkout = ({ user }) => {
     const navigate = useNavigate();
     //const sendEmailToUser = sendEmail();
     //shipping//
-    const [shippingCountry] = useState('Costa Rica');
+    const [shippingCountry, setshippingCountry] = useState('Costa Rica');
     const [shippingEstate, setshippingEstate] = useState('San Jose');
     const [shippingTown, setshippingTown] = useState('');
     const [shippingDireccion, setshippingDireccion] = useState('');
@@ -80,10 +80,10 @@ export const Checkout = ({ user }) => {
     };
 
     const handleCardNumberChange = ({ target }) => {
-        // solo numeros
+        // solo números
         const sanitizedValue = target.value.replace(/\D/g, '');
     
-        // espacio cada 4 numeros
+        // espacio cada 4 números
         const formattedValue = sanitizedValue.replace(/(\d{4})/g, '$1 ').trim();
     
         // Set the state with the formatted value
@@ -91,20 +91,21 @@ export const Checkout = ({ user }) => {
       };
 
       const handleExpirationDate = ({ target }) => {
-        // solo numeros
+        // solo números
         const sanitizedValue = target.value.replace(/\D/g, '');
-        // "/ cada 2 numeros
+        // "/ cada 2 números
         const formattedValue = sanitizedValue.replace(/(\d{2})/, '$1/').trim();
         // Set the state with the formatted value
         setExpirationDate(formattedValue.length <  6 ? formattedValue : '');
       };
 
       const handleCvv = ({target}) => {
-        // solo numeros
+        // solo números
         const sanitizedValue = target.value.replace(/\D/g, '');
 
         setCvv(sanitizedValue.length < 4 ? sanitizedValue : '')
       }
+      
     const handleProvienceChange = (event) => {
         setshippingEstate(event.target.value); 
         const selectedProvince = event.target.value;

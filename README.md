@@ -1,67 +1,70 @@
-# FutStore CR 
-## https://crfutstore.web.app/
-## Ecommerce Website - React Project
+# Getting Started with Create React App
 
-\**Download and Run Email Server Rep to have functioning Emails after ordered placed**
-https://github.com/faustogenga/Email-Server
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Currently Hosted in Firebase
-Developed a college web design project with React and Firebase, presenting a prototype inspired by a fictional soccer store. 
-Showcased proficiency in frontend development and successful backend integration, emphasizing dynamic functionalities and a user-friendly interface.
-
-This project was made for React Web Design College Class 3CO23-160361G1 DISEÑO WEB II, ULACIT. \
-All resources are used for learning / school related purposes. \
-**`Owner`** : \
-Fausto Genga : *80 commits    27,617 ++    3,807 --* \
-**`Contributors`** : \
-aemersonm : *15 commits    816 ++    347 --* \
-Espaba : *12 commits    1,047 ++    454 --* \
-Apolo-Git : *3 commits    445 ++    39 --* \
-
-## Project Requierments :
-Functional Requirements of an Ecommerce:
-1. User Registration:
-  - Allow users to register as sellers and buyers.
-  - User authentication with email login options.
-  - User personal and contact information.
-    
-3. Product Management:
-  - Allow sellers to add, edit and delete products.
-  - Categorization and labeling of products.
-  - Upload images and detailed product descriptions.
-  - Set prices, availability and shipping options.
-    
-4. Search and Filtering:
-  - Search engine that allows buyers to search for products by word key, category, price, location, etc.
-  - Advanced filters to refine search results.
-    
-6. Shopping Cart:
-  - Functionality to add and remove products from the shopping cart.
-  - Calculate the total of the purchase.
-  - Payment process and calculation of taxes and shipping costs.
-    
-7. Purchase Process:
-  - Simulate secure payment options (credit card, PayPal, etc.).
-  - Management of multiple shipping addresses.
-  - Order confirmation by email.
-    
-8. Order Management:
-  - Order history for buyers.
-  - Order status (pending, in process, shipped, delivered).
-  - Communication between buyers and sellers.
-    
-9. Ratings and Reviews System:
-  - Allow buyers to leave ratings and reviews for products and sellers.
-  - Average ratings and comments visible on seller profiles and products.
-
-10. Seller Account Management:
-  - Dashboard for sellers to manage their products and orders.
-  - Sales reports and statistics.
-  - Approval process for new sellers and products.
-
-### Data stored in Cloud Firestore.
 ## Available Scripts
+
 In the project directory, you can run:
+
 ### `npm start`
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

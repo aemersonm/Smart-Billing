@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,7 +20,7 @@ import { Status } from './Status';
 
 
 
-export const BasicTable = ({ user, imgsProducts }) => {
+export const BasicTable = ({ user }) => {
     const [products, setproducts] = useState([]);
     const [orders, setorders] = useState([]);
 
@@ -67,17 +67,14 @@ export const BasicTable = ({ user, imgsProducts }) => {
         setorders(filterData);
     };
 
-    const fetchDataProductsCallBack = useCallback(fetchDataProducts, [user.email]);
-    const fetchDataOrdersCallBack = useCallback(fetchDataOrders, [user.email]);
-    
     useEffect(() => {
         if (!user) {
             return;
         } else {
-            fetchDataProductsCallBack(user.email);
-            fetchDataOrdersCallBack(user.email);
+            fetchDataProducts(user.email);
+            fetchDataOrders(user.email);
         }
-    }, [user, fetchDataProductsCallBack, fetchDataOrdersCallBack]);
+    }, [user]);
 
 
     const handleEditProduct = async (currentId, values) => {
@@ -182,8 +179,8 @@ export const BasicTable = ({ user, imgsProducts }) => {
             }
             {/*Tabla productos */}
             <div className='container-fluid justify-content-center d-flex'>
-                <TableContainer className="table1 m-4" component={Paper} style={{ width: '80%' }} >
-                    <Table aria-label="simple table">
+                <TableContainer component={Paper} style={{ width: '80%' }} className='m-4' >
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell style={{ fontWeight: "bolder" }} >Producto</TableCell>
@@ -198,7 +195,7 @@ export const BasicTable = ({ user, imgsProducts }) => {
                                 </TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody className='table1body'>
+                        <TableBody>
                             {products?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => (
                                     <TableRow
@@ -214,7 +211,7 @@ export const BasicTable = ({ user, imgsProducts }) => {
                                         <TableCell align="right">{row.size}</TableCell>
                                         <TableCell align="right">{row.stock}</TableCell>
                                         <TableCell align="right">
-                                            <Edit user={user} item={row} currentId={row.id} handleEdit={handleEditProduct} imgsProducts={imgsProducts} />
+                                            <Edit user={user} item={row} currentId={row.id} handleEdit={handleEditProduct} />
                                         </TableCell>
                                         <TableCell align="right">
                                             <Delete currentId={row.id} handleDelete={handleDeleteProduct} />
@@ -236,7 +233,7 @@ export const BasicTable = ({ user, imgsProducts }) => {
             </div>
             {/*Tabla ordenes*/}
             <div className='container-fluid justify-content-center d-flex'>
-                <TableContainer component={Paper} style={{ width: '85%' }} className='table1 m-4' >
+                <TableContainer component={Paper} style={{ width: '85%' }} className='m-4' >
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
@@ -245,7 +242,7 @@ export const BasicTable = ({ user, imgsProducts }) => {
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>Imagen</TableCell>
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>Fecha</TableCell>
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>MétodoPago</TableCell>
-                                <TableCell align="center" style={{ fontWeight: "bolder" }}>Cantidad</TableCell>
+                                <TableCell align="center" style={{ fontWeight: "bolder" }} className='p-0'>Cantidad</TableCell>
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>Dirección</TableCell>
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>Usuario</TableCell>
                                 <TableCell align="center" style={{ fontWeight: "bolder" }}>Total</TableCell>
@@ -254,7 +251,7 @@ export const BasicTable = ({ user, imgsProducts }) => {
                                 <TableCell align="center"></TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody className='table1body'>
+                        <TableBody>
                             {orders?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => (
                                     <TableRow
@@ -270,13 +267,13 @@ export const BasicTable = ({ user, imgsProducts }) => {
                                         </TableCell>
                                         <TableCell align="center">{row.orderDate} {row.orderTime}</TableCell>
                                         <TableCell align="right">{row.paymentMethod}</TableCell>
-                                        <TableCell align="center">{row.quantity}</TableCell>
-                                        <TableCell align="center">
+                                        <TableCell align="center" className='p-0'>{row.quantity}</TableCell>
+                                        <TableCell align="center" colSpan={1} className='p-0'>
                                             <button type="button" className="btn btn-link p-0" onClick={() => openShippingInfo(row)}>{row.shippingTown}</button>
                                         </TableCell>
                                         <TableCell align="right">{row.userEmail}</TableCell>
                                         <TableCell align="right">{row.price}</TableCell>
-                                        <TableCell align="center">
+                                        <TableCell align="center" colSpan={2} className='p-0'>
                                             <button type="button" className="btn btn-link p-0" onClick={() => openShippingStatus(row)}>{row.status}</button>
                                         </TableCell>
                                         <TableCell align="right">
@@ -301,8 +298,8 @@ export const BasicTable = ({ user, imgsProducts }) => {
                     />
                 </TableContainer>
             </div>
-            <div className=' container-fluid justify-content-center d-flex'>
-                <div className='graph bg-white rounded m-3'>
+            <div className='container-fluid justify-content-center d-flex'>
+                <div className='bg-white rounded m-3'>
                     <h5 className='text-center'>Ventas</h5>
                     <BarChart
                         xAxis={[

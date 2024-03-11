@@ -6,11 +6,9 @@ import { Footer } from '../components/Footer'
 import { useEffect } from 'react'
 import { Video } from '../components/Video'
 
-export const Home = ({user, loggedIn, logOut, isVendor, isCatalog, setIsCatalog, imgsProducts}) => {
+export const Home = ({user, loggedIn, logOut, isVendor, isCatalog, setIsCatalog}) => {
   
-  useEffect(() => {  
-    setIsCatalog(false); 
-  }, [setIsCatalog]);
+  useEffect(() => {  setIsCatalog(false); }, []);
 
   return (
     <div style={{ position: 'relative' }} >
@@ -21,7 +19,7 @@ export const Home = ({user, loggedIn, logOut, isVendor, isCatalog, setIsCatalog,
         isVendor = {isVendor}
         />
         <Main/>
-        <Products isCatalog = {isCatalog} isVendor = {isVendor} loggedIn={loggedIn} user={user} imgsProducts={imgsProducts}/>
+        <Products isCatalog = {isCatalog} isVendor = {isVendor} loggedIn={loggedIn}  user={user}/>
         <Banner isVendor = {isVendor}/>
         <Video/>
         <Footer/>

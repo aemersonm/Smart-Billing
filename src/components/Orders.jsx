@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../CSS/Orders.css';
 import { Button, Container, Row, Table } from 'react-bootstrap';
 import Swal from 'sweetalert2';
@@ -8,6 +8,11 @@ import { ReviewButton } from './ReviewButton';
 export const Orders = ({ user }) => {
     const [orders, setOrders] = useState([]);
 
+    useEffect(() => {
+        if (user && user.email) {
+            fetchOrders();
+        }
+    }, [user]);
 
     const fetchOrders = async () => {
         try {
@@ -26,15 +31,7 @@ export const Orders = ({ user }) => {
                 icon: "error"
             });
         }
-    };
-
-    const fetchOrdersCallBack = useCallback(fetchOrders, [user.email]);
-
-    useEffect(() => {
-        if (user && user.email) {
-            fetchOrdersCallBack();
-        }
-    }, [user, fetchOrdersCallBack]);
+    }
 
     const showOrderDetails = async (orderId) => {
         try {
@@ -131,7 +128,7 @@ export const Orders = ({ user }) => {
                     </div>
                 </div>
                 <Row className="justify-content-center">
-                    <Table responsive="sm" className='ordersResponsive table table-bordered border-primary align-middle table-info table-sm'>
+                    <Table responsive="sm" className='table table-bordered border-primary align-middle table-info table-sm'>
                         <thead style={{ position: 'sticky', top: '0' }}>
                             <tr style={{ fontSize: '18px', fontFamily: 'Times New Roman' }}>
                                 <th className='text-center'>Imagen</th>
@@ -180,11 +177,13 @@ export const Orders = ({ user }) => {
                                         </td>
                                         <td className='text-center'> {item.orderDate} {item.orderTime}</td>
                                         <td className='text-center'>
+                                            <h6>
                                                 {item.status === 'Pendiente' ? (
                                                     <button type="button" className="btn btn-primary p-1" onClick={() => openShippingStatus(item)}>{item.status}🕑</button>
                                                 ) : (
                                                     <button type="button" className="btn btn-success p-1" onClick={() => openShippingStatus(item)}>{item.status}📫</button>
                                                 )}
+                                            </h6>
                                         </td>
                                         <td className='text-center'>
                                             <Button className="btn btn-primary mb-1" onClick={() => showOrderDetails(item.orderId)}>Ver más detalles 📃</Button>

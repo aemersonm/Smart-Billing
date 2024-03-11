@@ -1,11 +1,18 @@
 import { Tooltip } from 'react-tooltip'
 import { collectionAssignation, onFindbyEmail } from '../CRUD/app';
 import Swal from 'sweetalert2';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Navbar = ({ loggedIn, user, logOut, isVendor }) => {
 
   const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    if (user && user.email) {
+      getCartNumber();
+    }
+  }, [user]);
+
 
   const getCartNumber = async () => {
     try {
@@ -29,20 +36,10 @@ export const Navbar = ({ loggedIn, user, logOut, isVendor }) => {
     }
   };
 
-  const getCartNumberCallBack = useCallback(getCartNumber, [user?.email]);
-
-  useEffect(() => {
-    if (user && user.email) {
-      getCartNumberCallBack();
-    }
-  }, [user, getCartNumberCallBack]);
-
   return (
     <div>
       <div>
-        <a href='/'>
-          <img src="/assets/Banner.png" className="img-fluid" width={'100%'} alt="Banner" />
-        </a>
+        <img src="/assets/Banner.png" className="img-fluid" width={'100%'} alt="Banner" />
       </div>
       <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,11 +98,11 @@ export const Navbar = ({ loggedIn, user, logOut, isVendor }) => {
                 )}
                 <i className="bi bi-person-circle mx-2 text-info"></i>
                 <i className='text-white' id="my-anchor-element">
-                  Bienvenido {user?.email.split("@")[0]}
+                  Bienvenido {user.email.split("@")[0]}
                 </i>
                 <Tooltip anchorSelect="#my-anchor-element" place='bottom'>
                   <div>
-                    email : {user?.email}
+                    email : {user.email}
                     <br />
                     Fecha de creacion : {user.metadata.creationTime.substring(5, 16)}
                   </div>

@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { collectionAssignation, onFindAll, onInsertMessageDoc, onInsertNewChat } from '../CRUD/app';
+import React, { useEffect, useState } from 'react'
+import { collectionAssignation, onFindAll, onInsert, onInsertMessageDoc, onInsertNewChat, onUpdate } from '../CRUD/app';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -9,10 +9,12 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
+import { BarChart } from '@mui/x-charts/BarChart';
 import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import ModalMessages from './ModalMessages';
 import { ChatMessages } from './ChatMessages';
 
 
@@ -30,6 +32,12 @@ export const Inbox = ({ user, isVendor }) => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
 
+  useEffect(() => {
+    if (user) {
+      fetchDataOrders();
+      fetchDataChat();
+    }
+  }, [user, isVendor]);
 
   const fetchDataOrders = async (email) => {
     collectionAssignation('OrderPlaced');
@@ -76,18 +84,6 @@ export const Inbox = ({ user, isVendor }) => {
     ));
     setChats(filterData);
   }
-
-  const fetchDataOrdersCallBack = useCallback(fetchDataOrders, [isVendor, user.email]);
-  const fetchDataChatCallBack = useCallback(fetchDataChat, []);
-
-  useEffect(() => {
-    if (user) {
-      fetchDataOrdersCallBack();
-      fetchDataChatCallBack();
-    }
-  }, [user, fetchDataOrdersCallBack, fetchDataChatCallBack]);
-
-  
 
   const refresh = async () => {
     await fetchDataChat();
@@ -137,8 +133,8 @@ export const Inbox = ({ user, isVendor }) => {
   const sendNewMessage = async () => {
     try {
       await onInsertNewChat({
-        sender: isVendor ? vendor :  user.email,
-        vendor: isVendor ? user.email :  vendor,
+        sender: user.email,
+        vendor: vendor,
       }, {
         msm: message,
         sender: user.email,
@@ -210,13 +206,13 @@ export const Inbox = ({ user, isVendor }) => {
       backgroundSize: "cover"
     }}
       className='d-flex justify-content-center py-4'>
-      <div style={{ width: "40%" }} className='inbox'>
+      <div style={{ width: "40%" }} className=''>
         <h3 className='text-center mt-3 bg-white rounded-pill opacity-75'>Mensajes 📧</h3>
         <div className='text-center'>
           <button className='btn btn-info m-3' onClick={() => setIsOpen(true)}>Nuevo</button>
           <button className='btn btn-success m-3' onClick={() => { setIsOpen(false); inboxLoad() }}>Inbox</button>
         </div>
-        <div className='inbox3 p-5 bg-white rounded'>
+        <div className='p-5 bg-white rounded'>
           {isOpen ? (
             <>
               <div className='d-flex'>
@@ -253,7 +249,7 @@ export const Inbox = ({ user, isVendor }) => {
               </div>
             </>
           ) : (
-            <div className='inbox2 text-center'>
+            <div className='text-center'>
               <>
                 <TableContainer component={Paper} className='' >
                   <Table aria-label="simple table">

@@ -6,7 +6,7 @@ import { Catalognavigation } from '../components/Catalognavigation';
 import { Catalog } from '../components/Catalog';
 import { collectionAssignation, onFindAll } from '../CRUD/app';
 
-export const ProductsCatalog = ({ user, loggedIn, logOut, isCatalog, setIsCatalog, isVendor, imgsProducts}) => {
+export const ProductsCatalog = ({ user, loggedIn, logOut, isCatalog, setIsCatalog, isVendor }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [categoryClicked, setCategoryClicked] = useState('All');
@@ -96,12 +96,12 @@ export const ProductsCatalog = ({ user, loggedIn, logOut, isCatalog, setIsCatalo
             <Navbar loggedIn={loggedIn} user={user} logOut={logOut} isVendor={isVendor} />
 
             <div className='responsiveCategory d-flex'>
-                <Catalogsidebar handleClickCategory={handleClickCategory} handleClickPrice={handleClickPrice} categoryClicked={categoryClicked} priceClicked={priceClicked} loggedIn={loggedIn} />
+                <Catalogsidebar handleClickCategory={handleClickCategory} handleClickPrice={handleClickPrice} categoryClicked={categoryClicked} priceClicked={priceClicked} />
                 <div className='container'>
                     <div>
                         <Catalognavigation handleSearchInput={handleSearchInput} />
                     </div>
-                    <Catalog loggedIn={loggedIn} user={user} products={filteredProducts} isCatalog={isCatalog} isVendor={isVendor} imgsProducts={imgsProducts} />
+                    <Catalog loggedIn={loggedIn} user={user} products={filteredProducts} isCatalog={isCatalog} isVendor={isVendor} />
                 </div>
             </div>
             <Footer />

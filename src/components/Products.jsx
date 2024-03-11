@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Productitem } from './Productitem'
 import { collectionAssignation, onFindAll } from '../CRUD/app'
 
-export const Products = ({loggedIn,user,isCatalog, isVendor, imgsProducts}) => {
+export const Products = ({loggedIn,user,isCatalog, isVendor}) => {
 
     const [products, setproducts] = useState([]);
 
@@ -28,10 +28,10 @@ export const Products = ({loggedIn,user,isCatalog, isVendor, imgsProducts}) => {
             <div className="container">
             <h4 style={{fontWeight:"bold", color:"#5d5e5e"}}>🔥Destacado</h4>
                 <div className="row">
-                    {products.filter(product => product.category === "Cleats").slice(0,4).map((product, index) => {
+                    {products.filter(product => product.category === "Soccer Cleats").slice(0,4).map((product, index) => {
                         return (
                             <div className="responsiveProduct col-lg-3 col-md-6 col-sm-12" key={index}>
-                                 <Productitem loggedIn={loggedIn} user={user} product={product} isCatalog={isCatalog} isVendor={isVendor} imgsProducts={imgsProducts}/>
+                                 <Productitem loggedIn={loggedIn} user={user} product={product} isCatalog={isCatalog} isVendor={isVendor}/>
                             </div>
                         )
                     })

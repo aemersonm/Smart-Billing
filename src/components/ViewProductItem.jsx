@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Swal from "sweetalert2";
 import { Navbar } from '../components/Navbar'
 import { collectionAssignation, onFindAll, onInsert, onFindProductinReviews, onFindVendorinReviews } from '../CRUD/app';
-import { productInformation, productImgUrl } from './Productitem'
+import { productInformation } from './Productitem'
 import { useNavigate } from "react-router-dom";
 import { Footer } from './Footer';
 import StarRating from './StarRating';
@@ -71,7 +71,7 @@ const ViewProductItem = ({ loggedIn, user, logOut, isVendor }) => {
   const addToFirebaseCart = async () => {
     const product = {
       product_id: productInformation.id,
-      image: productImgUrl,
+      image: productInformation.img,
       name: productInformation.name,
       price: productInformation.price,
       quantity: 1,
@@ -124,6 +124,10 @@ const ViewProductItem = ({ loggedIn, user, logOut, isVendor }) => {
     }
   }
 
+
+
+
+
   if (!productInformation) {
     return navigate("/")
   } else
@@ -140,7 +144,7 @@ const ViewProductItem = ({ loggedIn, user, logOut, isVendor }) => {
           backgroundImage: "url(https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
           backgroundSize: "cover"
         }}>
-          <div className='productItem container bg-white mt-5 mb-5' style={{ display: 'flex' }}>
+          <div className='container bg-white mt-5 mb-5' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
             <div className='position-relative'>
               <button
                 type='button'
@@ -150,9 +154,9 @@ const ViewProductItem = ({ loggedIn, user, logOut, isVendor }) => {
               >
                 Volver
               </button>
-              <img alt='Produt_Image' style={{ width: '90%', height: '100%' }} src={productImgUrl}></img>
+              <img alt='Produt_Image' style={{ width: '90%', height: '100%' }} src={productInformation.img}></img>
             </div>
-            <div className="productItem2" style={{
+            <div style={{
               marginTop: "30px",
               display: "flex",
               flexDirection: "column",

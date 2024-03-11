@@ -20,7 +20,7 @@ export const Catalogcategories = ({ handleClickCategory, categoryClicked }) => {
                         categoryClicked={categoryClicked}
                         handleClickCategory={handleClickCategory}
                         title="Soccer Cleats"
-                        name="Cleats"
+                        name="Soccer Cleats"
                     />
 
                     <CataloginputCategory
@@ -34,7 +34,7 @@ export const Catalogcategories = ({ handleClickCategory, categoryClicked }) => {
                         categoryClicked={categoryClicked}
                         handleClickCategory={handleClickCategory}
                         title="Balones de Futbol"
-                        name="Balls"
+                        name="Balones"
                     />
 
                 </div>

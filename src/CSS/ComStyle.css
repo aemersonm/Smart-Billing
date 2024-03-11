@@ -8,11 +8,9 @@ h1, h2, h3, h4, h5, button {
 
 
 .navbar {
-  padding: 0% !important;
-  border: 0px !important;
   margin-top: 3px;
   background-color: #000000;
-  height: 43px;
+  height: 40px;
 }
 
 .navbar-toggler {
@@ -21,12 +19,6 @@ h1, h2, h3, h4, h5, button {
   height: 30px;
   border: white;
 }
-
-.navbar-toggler:not(.collapsed) .navbar-toggler-icon{
-  opacity: 0.5;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/06/X_blanc_sur_fond_rectangulaire_noir.png");
-}
-
 
 .navbar-toggler-icon {
   font-size: 1rem;
@@ -49,6 +41,72 @@ h1, h2, h3, h4, h5, button {
   background-size: cover;
   margin-bottom: 3%;
 }
+
+/* (desktop, tablet, etc.) */
+@media (min-width: 768px) {
+  .main-box {
+    height: 90vh;
+  }
+}
+
+/*(iPhone) */
+@media (max-width: 767px) {
+  .main-box {
+    height: 50vh;
+    /* Adjust the height for smaller screens */
+  }
+  .responsiveProduct {
+    text-align: center;
+  }
+  .responsiveBanner {
+    width: 90%;
+  }
+  .responsiveBrands {
+    display: none;
+  }
+  .responsiveBrandsNames {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .responsiveText {
+    font-size: small;
+  }
+  .responsiveSubTitle {
+    font-size: large;
+  }
+  .top-content {
+    text-align: center;
+  }
+  .responsiveVideo{
+    padding: 2 !important;
+    text-align: center;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    width: 100%;
+  }
+  .responsivePics{
+    display: block !important;
+    width: 100% !important;
+  }
+  .responsivePics2{
+    display: flex !important;
+    width: 100% !important;
+    margin-bottom: 5% !important;
+  }
+  .responsivePics3{
+    width: 20% !important;
+  }
+
+  .responsiveFooter {
+    font-size: small;
+  }
+  .responsiveCategory{
+    width: 100%;
+    display: block !important;
+  }
+}
+
 
 
 .main-boton {
