@@ -4,12 +4,12 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDloelSJfu35MuofY4pPeOHu5P-as61GLc",
-  authDomain: "dw2-proyecto.firebaseapp.com",
-  projectId: "dw2-proyecto",
-  storageBucket: "dw2-proyecto.appspot.com",
-  messagingSenderId: "717007061547",
-  appId: "1:717007061547:web:079e28dd6008f77d30206e"
+  apiKey: "AIzaSyAMxw1loCq0hgdgWCxPCXkgTMHXGZeNIV8",
+  authDomain: "smart-billing-c16af.firebaseapp.com",
+  projectId: "smart-billing-c16af",
+  storageBucket: "smart-billing-c16af.appspot.com",
+  messagingSenderId: "910912001098",
+  appId: "1:910912001098:web:f5d1923c7a51c641cbc2b3"
 };
 
 // Initialize Firebase
